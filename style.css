@@ -1,0 +1,292 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.lock {
+  overflow-y: hidden;
+}
+
+.products__info {
+  margin-bottom: 40px;
+}
+.products__title {
+  display: inline-block;
+  font-size: 2rem;
+  margin-right: 10px;
+}
+.products__title--gray {
+  color: #b3b3b7;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 225px);
+  max-width: 1000px;
+  column-gap: 30px;
+  row-gap: 40px;
+  margin: 0 auto;
+}
+
+.card {
+  min-height: 350px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px;
+  position: relative;
+  transition: box-shadow, 400ms ease;
+}
+.card .card__discount {
+  padding: 4px 8px;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: #ff6633;
+  border-radius: 4px;
+  font-weight: 400;
+  font-size: 16px;
+  color: #fff;
+}
+.card:hover {
+  box-shadow: 0 8px 20px rgba(87, 87, 87, 0.2);
+}
+.card__top {
+  position: relative;
+  overflow: hidden;
+}
+.card__image {
+  display: block;
+  width: 220px;
+  height: 220px;
+}
+.card__image > img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: 0.2s;
+}
+.card__image:hover > img {
+  transform: scale(1.2);
+}
+.card__bottom {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+  padding: 10px;
+}
+.card__prices {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.card__price:before {
+  content: "₽ ";
+  justify-self: end;
+}
+.card__price--discount {
+  font-weight: 700;
+  font-size: 19px;
+  color: #414141;
+  display: block;
+}
+.card__price--discount::after {
+  content: "Со скидкой";
+  display: block;
+  font-weight: 400;
+  font-size: 12px;
+  color: #bfbfbf;
+}
+.card__price--common {
+  font-weight: 400;
+  font-size: 16px;
+  color: #606060;
+  display: block;
+  text-decoration: line-through;
+}
+.card__price--common::after {
+  content: "Обычная";
+  display: block;
+  font-weight: 400;
+  font-size: 12px;
+  color: #bfbfbf;
+}
+.card__title {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 150%;
+  color: #414141;
+  transition: color 250ms ease;
+}
+.card__title:hover {
+  color: #e7693e;
+}
+.card__add {
+  display: block;
+  font-weight: 400;
+  font-size: 17px;
+  color: #70c05b;
+  padding: 10px;
+  border: 1px solid #70c05b;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 250ms ease;
+  margin-top: auto;
+}
+.card__add:hover {
+  border: 1px solid #ff6633;
+  background-color: #ff6633;
+  color: #fff;
+}
+
+.cart {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  background-color: #364364;
+  transition: transform 250ms ease;
+  cursor: pointer;
+  position: fixed;
+  top: 50px;
+  right: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+}
+
+.cart__image {
+  width: 50px;
+}
+.cart:hover {
+  transform: scale(1.1);
+}
+.cart__num {
+  position: absolute;
+  background-color: #d62240;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  top: -5px;
+  right: -5px;
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.45);
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+}
+.popup__container {
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 800px;
+  min-height: 300px;
+  max-height: 90vh;
+  background-color: #fff;
+  border-radius: 4px;
+}
+.popup__item {
+  border-bottom: 1px solid #ddd;
+  padding: 20px;
+}
+.popup__item:last-of-type {
+  border-bottom: none;
+}
+.popup__title {
+  font-size: 20px;
+}
+.popup__product {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.popup__product-wrap {
+  display: flex;
+  align-items: center;
+}
+.popup__product-image {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin-right: 10px;
+}
+.popup__product-title {
+  max-width: 300px;
+  font-weight: 500;
+}
+.popup__product-priceWithDiscount {
+  font-size: 18px;
+  margin-right: 15px;
+  color: #70c05b;
+}
+.popup__product-price {
+  color: #d62240;
+  font-size: 12px;
+  margin-right: 15px;
+}
+.popup__product-price::before {
+  content: "-";
+}
+.popup__product-delete {
+  font-size: 12px;
+  padding: 5px;
+  cursor: pointer;
+  color: #d62240;
+}
+.popup__cost {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 5px;
+}
+.popup__cost-title {
+  margin-right: 15px;
+  font-size: 20px;
+  color: #364364;
+  text-align: right;
+}
+.popup__cost-value {
+  font-size: 20px;
+}
+.popup__close {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  right: 0;
+  padding: 20px;
+  color: rgba(54, 67, 100, 0.7);
+  font-size: 20px;
+}
+.popup__close:hover {
+  color: rgb(54, 67, 100);
+}
+.popup--open {
+  display: flex;
+}
